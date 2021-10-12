@@ -6,12 +6,20 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestoreSwift
 
 class TableViewCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     
-    @IBOutlet weak var authorLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel! {
+        
+        didSet {
+            
+            authorLabel.text = "Allie"
+        }
+    }
     
     @IBOutlet weak var timeLabel: UILabel!
     

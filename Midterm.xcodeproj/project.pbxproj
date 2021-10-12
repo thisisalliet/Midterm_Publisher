@@ -16,6 +16,7 @@
 		09AAA313271519A7009091EB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AAA312271519A7009091EB /* TableViewCell.swift */; };
 		09AAA31527151DC7009091EB /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AAA31427151DC7009091EB /* PostViewController.swift */; };
 		09AAA31727151F4E009091EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09AAA31627151F4E009091EB /* GoogleService-Info.plist */; };
+		09AAA3192715264C009091EB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09AAA3182715264C009091EB /* Model.swift */; };
 		57D8BF3BC80D591266E0A2C7 /* Pods_Midterm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9613D5C509B9D15995E3C8BF /* Pods_Midterm.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		09AAA312271519A7009091EB /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		09AAA31427151DC7009091EB /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		09AAA31627151F4E009091EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		09AAA3182715264C009091EB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		51F881BC898CCD24A16DA958 /* Pods-Midterm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Midterm.debug.xcconfig"; path = "Target Support Files/Pods-Midterm/Pods-Midterm.debug.xcconfig"; sourceTree = "<group>"; };
 		9613D5C509B9D15995E3C8BF /* Pods_Midterm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Midterm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8B633934F6CE4C120C1D972 /* Pods-Midterm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Midterm.release.xcconfig"; path = "Target Support Files/Pods-Midterm/Pods-Midterm.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,9 +74,10 @@
 				09AAA2FE271447EF009091EB /* AppDelegate.swift */,
 				09AAA300271447EF009091EB /* SceneDelegate.swift */,
 				09AAA302271447EF009091EB /* ViewController.swift */,
+				09AAA3182715264C009091EB /* Model.swift */,
 				09AAA31427151DC7009091EB /* PostViewController.swift */,
-				09AAA304271447EF009091EB /* Main.storyboard */,
 				09AAA312271519A7009091EB /* TableViewCell.swift */,
+				09AAA304271447EF009091EB /* Main.storyboard */,
 				09AAA309271447F1009091EB /* LaunchScreen.storyboard */,
 				09AAA307271447F1009091EB /* Assets.xcassets */,
 				09AAA30C271447F1009091EB /* Info.plist */,
@@ -111,7 +114,7 @@
 				09AAA2F7271447EF009091EB /* Sources */,
 				09AAA2F8271447EF009091EB /* Frameworks */,
 				09AAA2F9271447EF009091EB /* Resources */,
-				4AFC1EE411522F2E1B44C623 /* [CP] Embed Pods Frameworks */,
+				89FF19C37C5EF58AC5E2E6FE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -192,7 +195,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4AFC1EE411522F2E1B44C623 /* [CP] Embed Pods Frameworks */ = {
+		89FF19C37C5EF58AC5E2E6FE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -219,6 +222,7 @@
 				09AAA303271447EF009091EB /* ViewController.swift in Sources */,
 				09AAA313271519A7009091EB /* TableViewCell.swift in Sources */,
 				09AAA2FF271447EF009091EB /* AppDelegate.swift in Sources */,
+				09AAA3192715264C009091EB /* Model.swift in Sources */,
 				09AAA301271447EF009091EB /* SceneDelegate.swift in Sources */,
 				09AAA31527151DC7009091EB /* PostViewController.swift in Sources */,
 			);
@@ -371,7 +375,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WK4Z34T3L8;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Midterm/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

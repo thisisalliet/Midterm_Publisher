@@ -7,7 +7,5 @@ target 'Midterm' do
 
   # Pods for Midterm
     pod 'Firebase/Firestore'
-    pod 'Firebase/Analytics'
     pod 'FirebaseFirestoreSwift'
-    pod 'Firebase/Core'
 end

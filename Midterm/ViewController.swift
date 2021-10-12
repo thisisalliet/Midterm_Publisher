@@ -10,27 +10,115 @@ import Firebase
 import FirebaseFirestoreSwift
 
 class ViewController: UIViewController {
+    
+    var db: Firestore!
+    
+    let timestamp = "\(Timestamp(date: Date()))"
+    
+    var postList = [Post]() {
+        
+        didSet {
+            
+            tableview.reloadData()
+        }
+    }
 
+    @IBOutlet weak var tableview: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        tableview.dataSource = self
+        
+        tableview.delegate = self
+        
+//        fetchData()
     }
     
-    func addData() {
-   let articles = Firestore.firestore().collection("articles")
-   let document = articles.document()
-   let data: [String: Any] = [ "author": [
-   "email": "wayne@school.appworks.tw", "id": "waynechen323",
-   "name": "AKA小安老師"
-   ],
-   "title": "IU「亂穿」竟美出新境界!笑稱自己品味奇怪 網笑:靠顏值撐住女神氣場",
-   "content": "南韓歌手IU(李知恩)無論在歌唱方面或是近期的戲劇作品都有亮眼的成績，但俗話說人無完美、美玉微瑕，曾再跟工作人員的互動影片中坦言自己品
-   味很奇怪，近日在IG上分享了宛如「媽媽們青春時代的玉女歌手」超復古穿搭造型，卻意外美出新境界。", "createdTime": NSDate().timeIntervalSince1970,
-   "id": document.documentID,
-   "category": "Beauty"
-   ]
-   document.setData(data) }
+//    func fetchData() {
+//
+//        db.collection(CollectionName.articles.rawValue).getDocuments { [weak self] snapshot, error in
+//
+//            guard let snapshot = snapshot else { return }
+//
+//            snapshot.documents.forEach { snapshot in
+//
+//                guard let post = try? snapshot.data(as: Post.self) else { return }
+//                print("""
+//                        title: \(post.title)
+//                        author: \(post.author)
+//                        category: \(post.category)
+//                        content: \(post.content)
+//                        time: \(post.time)
+//                        ==============================================
+//                """)
+//
+//                self.postList.append(post)
+//            }
+//        }
+//    }
+    
+    func monitorData() {
+        db.collection(CollectionName.articles.rawValue).addSnapshotListener { snapshot, error in
+            guard let snapshot = snapshot else { return }
+            snapshot.documentChanges.forEach { documentChange in
+                switch documentChange.type {
+                case .added:
+                    guard let post = try? documentChange.document.data(as: Post.self) else { break }
+                    print("""
+                        title: \(post.title)
+                        author: \(post.author)
+                        category: \(post.category)
+                        content: \(post.content)
+                        time: \(post.time)
+                        ==============================================
+                """)
+                case .modified:
+                    print("modified")
+                case .removed:
+                    print("removed")
+                }
+            }
+        }
+    }
+}
 
 
+extension ViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return postList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell") as! TableViewCell
+        
+        cell.titleLabel.text = postList[indexPath.row].title
+        
+        cell.authorLabel.text = postList[indexPath.row].author
+        
+        cell.timeLabel.text = "\(postList[indexPath.row].time)"
+        
+        cell.contentLabel.text =  postList[indexPath.row].content
+        
+        cell.categoryLabel.text = postList[indexPath.row].category
+
+        return cell
+    }
+}
+
+
+extension ViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return UITableView.automaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 128
+    }
 }
 
