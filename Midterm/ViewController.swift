@@ -54,9 +54,11 @@ class ViewController: UIViewController {
     
     func setUpTabbar() {
         
-        self.tabBarController?.tabBar.isTranslucent = false
+        
+        self.tabBarController?.tabBar.backgroundColor = .white
 
         self.tabBarController?.tabBarItem.image = UIImage(systemName: "book")
+        self.tabBarController?.tabBar.isTranslucent = false
     }
     
     func fetchData() {

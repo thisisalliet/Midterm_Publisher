@@ -28,6 +28,8 @@ class PostViewController: UIViewController {
             postButton.titleLabel?.text = "POST"
             
             postButton.setTitleColor(.white, for: .normal)
+            
+            postButton.layer.cornerRadius = 5
         }
     }
     
@@ -36,9 +38,9 @@ class PostViewController: UIViewController {
         
         db = Firestore.firestore()
         
-        self.navigationController?.navigationItem.title = "Publisher"
+        setUpNavigationbar()
         
-        self.navigationController?.navigationBar.tintColor = .purple
+        setUpTabbar()
     }
     
     @IBAction func clickPostButton(_ sender: UIButton) {
@@ -50,22 +52,24 @@ class PostViewController: UIViewController {
     
     func setUpNavigationbar() {
         
-        self.navigationController?.navigationBar.isTranslucent = false
-
+        
         self.navigationController?.navigationItem.title = "Publisher"
         
         self.navigationController?.navigationItem.titleView?.tintColor = .white
+        self.navigationController?.navigationBar.isTranslucent = false
     }
     
     func setUpTabbar() {
         
         self.tabBarController?.tabBar.isTranslucent = false
+        
+        self.tabBarController?.tabBar.backgroundColor = .white
 
         self.tabBarController?.tabBarItem.image = UIImage(systemName: "square.and.pencil")
     }
     
     func addData() {
-        
+
         guard let title = titleTextField.text else { return }
         
         guard let category = categoryTextField.text else { return }
