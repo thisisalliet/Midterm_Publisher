@@ -12,16 +12,10 @@ import FirebaseFirestoreSwift
 class ViewController: UIViewController {
     
     var db: Firestore!
-    
+        
     let timestamp = "\(Timestamp(date: Date()))"
     
-    var postList = [Post]() {
-        
-        didSet {
-            
-            tableview.reloadData()
-        }
-    }
+    var postList = [Post]()
 
     @IBOutlet weak var tableview: UITableView!
     
@@ -54,11 +48,11 @@ class ViewController: UIViewController {
     
     func setUpTabbar() {
         
+        self.tabBarController?.tabBar.isTranslucent = false
         
         self.tabBarController?.tabBar.backgroundColor = .white
 
         self.tabBarController?.tabBarItem.image = UIImage(systemName: "book")
-        self.tabBarController?.tabBar.isTranslucent = false
     }
     
     func fetchData() {
@@ -78,8 +72,6 @@ class ViewController: UIViewController {
                         time: \(post.time)
                         ==============================================
                 """)
-
-//                self.postList.append(post)
             }
         }
     }
