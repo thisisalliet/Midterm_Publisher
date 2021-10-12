@@ -28,35 +28,59 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        db = Firestore.firestore()
+        
+        setUpNavigationbar()
+        
+        setUpTabbar()
+        
         tableview.dataSource = self
         
         tableview.delegate = self
         
-//        fetchData()
+        fetchData()
+        
+        monitorData()
     }
     
-//    func fetchData() {
-//
-//        db.collection(CollectionName.articles.rawValue).getDocuments { [weak self] snapshot, error in
-//
-//            guard let snapshot = snapshot else { return }
-//
-//            snapshot.documents.forEach { snapshot in
-//
-//                guard let post = try? snapshot.data(as: Post.self) else { return }
-//                print("""
-//                        title: \(post.title)
-//                        author: \(post.author)
-//                        category: \(post.category)
-//                        content: \(post.content)
-//                        time: \(post.time)
-//                        ==============================================
-//                """)
-//
+    func setUpNavigationbar() {
+        
+        self.navigationController?.navigationBar.isTranslucent = false
+
+        self.navigationController?.navigationItem.title = "Publisher"
+        
+        self.navigationController?.navigationItem.titleView?.tintColor = .white
+    }
+    
+    func setUpTabbar() {
+        
+        self.tabBarController?.tabBar.isTranslucent = false
+
+        self.tabBarController?.tabBarItem.image = UIImage(systemName: "book")
+    }
+    
+    func fetchData() {
+
+        db.collection(CollectionName.articles.rawValue).getDocuments { snapshot, error in
+
+            guard let snapshot = snapshot else { return }
+
+            snapshot.documents.forEach { snapshot in
+
+                guard let post = try? snapshot.data(as: Post.self) else { return }
+                print("""
+                        title: \(post.title)
+                        author: \(post.author)
+                        category: \(post.category)
+                        content: \(post.content)
+                        time: \(post.time)
+                        ==============================================
+                """)
+
 //                self.postList.append(post)
-//            }
-//        }
-//    }
+            }
+        }
+    }
     
     func monitorData() {
         db.collection(CollectionName.articles.rawValue).addSnapshotListener { snapshot, error in

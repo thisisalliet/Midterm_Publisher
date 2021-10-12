@@ -17,53 +17,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="cVA-Us-ac0">
-                                <rect key="frame" x="16" y="104" width="382" height="241"/>
+                                <rect key="frame" x="16" y="104" width="382" height="220"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="input title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="595-y8-Ogu">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="18"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="input title" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C3p-IB-fsg">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="input category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="maV-Rj-dI4">
-                                        <rect key="frame" x="0.0" y="26" width="382" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="input content" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SND-bh-s2B">
-                                        <rect key="frame" x="0.0" y="52" width="382" height="150"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="input category" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4vy-Gi-gpL">
+                                        <rect key="frame" x="0.0" y="42" width="382" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="input content" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nQ6-j8-qqo">
+                                        <rect key="frame" x="0.0" y="84" width="382" height="100"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="150" id="Meo-nl-DvR"/>
+                                            <constraint firstAttribute="height" constant="100" id="Zuo-EO-K3w"/>
                                         </constraints>
-                                        <color key="textColor" systemColor="labelColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ars-Dl-DBI">
-                                        <rect key="frame" x="0.0" y="210" width="382" height="31"/>
+                                        <rect key="frame" x="0.0" y="192" width="382" height="28"/>
+                                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="POST"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="POST">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="12" name="Helvetica-Bold"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </buttonConfiguration>
                                         <connections>
                                             <action selector="clickPostButton:" destination="Nfa-1U-UeT" eventType="touchUpInside" id="3Xs-OZ-KCm"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="nQ6-j8-qqo" secondAttribute="trailing" id="5uc-DC-iTh"/>
                                     <constraint firstAttribute="trailing" secondItem="Ars-Dl-DBI" secondAttribute="trailing" id="66i-uC-5mr"/>
-                                    <constraint firstAttribute="trailing" secondItem="SND-bh-s2B" secondAttribute="trailing" id="Bs7-Vo-Jj5"/>
-                                    <constraint firstAttribute="trailing" secondItem="maV-Rj-dI4" secondAttribute="trailing" id="Bz3-tI-XhL"/>
+                                    <constraint firstItem="4vy-Gi-gpL" firstAttribute="leading" secondItem="cVA-Us-ac0" secondAttribute="leading" id="BSE-gc-s1T"/>
+                                    <constraint firstAttribute="trailing" secondItem="4vy-Gi-gpL" secondAttribute="trailing" id="Gbi-JN-LR8"/>
                                     <constraint firstAttribute="bottom" secondItem="Ars-Dl-DBI" secondAttribute="bottom" id="LSi-Xf-weu"/>
-                                    <constraint firstAttribute="trailing" secondItem="595-y8-Ogu" secondAttribute="trailing" id="NNF-11-Dqp"/>
-                                    <constraint firstItem="maV-Rj-dI4" firstAttribute="leading" secondItem="cVA-Us-ac0" secondAttribute="leading" id="SMS-q9-8sf"/>
+                                    <constraint firstItem="C3p-IB-fsg" firstAttribute="top" secondItem="cVA-Us-ac0" secondAttribute="top" id="Shq-OA-vXZ"/>
+                                    <constraint firstItem="C3p-IB-fsg" firstAttribute="leading" secondItem="cVA-Us-ac0" secondAttribute="leading" id="U4Z-Rz-Gf9"/>
                                     <constraint firstItem="Ars-Dl-DBI" firstAttribute="leading" secondItem="cVA-Us-ac0" secondAttribute="leading" id="WOL-3b-Ixh"/>
-                                    <constraint firstItem="595-y8-Ogu" firstAttribute="top" secondItem="cVA-Us-ac0" secondAttribute="top" id="elD-a9-1Iz"/>
-                                    <constraint firstItem="SND-bh-s2B" firstAttribute="top" secondItem="maV-Rj-dI4" secondAttribute="bottom" constant="8" id="ha5-NC-YmW"/>
-                                    <constraint firstItem="SND-bh-s2B" firstAttribute="leading" secondItem="cVA-Us-ac0" secondAttribute="leading" id="jj6-ba-t1j"/>
-                                    <constraint firstItem="maV-Rj-dI4" firstAttribute="top" secondItem="595-y8-Ogu" secondAttribute="bottom" constant="8" id="sH6-36-lAg"/>
-                                    <constraint firstItem="Ars-Dl-DBI" firstAttribute="top" secondItem="SND-bh-s2B" secondAttribute="bottom" constant="8" id="y3l-g2-mdW"/>
-                                    <constraint firstItem="595-y8-Ogu" firstAttribute="leading" secondItem="cVA-Us-ac0" secondAttribute="leading" id="yOu-ay-tXd"/>
+                                    <constraint firstAttribute="trailing" secondItem="C3p-IB-fsg" secondAttribute="trailing" id="hju-A5-Pv9"/>
+                                    <constraint firstItem="Ars-Dl-DBI" firstAttribute="top" secondItem="nQ6-j8-qqo" secondAttribute="bottom" constant="8" id="lrJ-Ha-VgO"/>
+                                    <constraint firstItem="nQ6-j8-qqo" firstAttribute="leading" secondItem="cVA-Us-ac0" secondAttribute="leading" id="r3V-BG-Hgo"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -77,10 +82,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="fLW-i3-6IX"/>
                     <connections>
-                        <outlet property="categoryLabel" destination="maV-Rj-dI4" id="N3B-8y-goU"/>
-                        <outlet property="contentTextView" destination="SND-bh-s2B" id="JJo-rg-JWt"/>
+                        <outlet property="categoryTextField" destination="4vy-Gi-gpL" id="7fz-vs-Dxl"/>
+                        <outlet property="contentTextField" destination="nQ6-j8-qqo" id="OzE-mr-VwF"/>
                         <outlet property="postButton" destination="Ars-Dl-DBI" id="17V-og-lyP"/>
-                        <outlet property="titleLabel" destination="595-y8-Ogu" id="6fr-8O-9mc"/>
+                        <outlet property="titleTextField" destination="C3p-IB-fsg" id="D7O-ju-Ddr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NAS-Ww-Xt9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -185,11 +190,20 @@
         <scene sceneID="nBi-du-pih">
             <objects>
                 <navigationController title="Browse" automaticallyAdjustsScrollViewInsets="NO" id="IJV-eu-82j" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="4LL-RL-LB4"/>
+                    <tabBarItem key="tabBarItem" title="" selectedImage="book" catalog="system" id="4LL-RL-LB4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xaG-UP-MRb">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                        </navigationBarAppearance>
+                        <navigationBarAppearance key="scrollEdgeAppearance">
+                            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
+                        </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -209,6 +223,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" systemColor="systemIndigoColor"/>
+                        <color key="selectedImageTintColor" systemColor="systemIndigoColor"/>
+                        <tabBarAppearance key="standardAppearance"/>
+                        <tabBarAppearance key="scrollEdgeAppearance"/>
                     </tabBar>
                     <connections>
                         <segue destination="IJV-eu-82j" kind="relationship" relationship="viewControllers" id="h8r-qR-JzJ"/>
@@ -223,11 +241,20 @@
         <scene sceneID="7ti-s4-g8F">
             <objects>
                 <navigationController title="Post" automaticallyAdjustsScrollViewInsets="NO" id="d35-qf-zmp" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="LGD-O4-yK9"/>
+                    <tabBarItem key="tabBarItem" title="" selectedImage="square.and.pencil" catalog="system" id="LGD-O4-yK9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6pz-18-Ubr">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance">
+                            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                        </navigationBarAppearance>
+                        <navigationBarAppearance key="scrollEdgeAppearance">
+                            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
+                        </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -240,11 +267,13 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="book" catalog="system" width="128" height="99"/>
+        <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
