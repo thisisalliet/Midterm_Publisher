@@ -182,11 +182,16 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0f-0y-Uqr">
-                                <rect key="frame" x="358" y="805" width="40" height="31"/>
+                                <rect key="frame" x="338" y="806" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="PNE-pf-rvF"/>
+                                    <constraint firstAttribute="height" constant="60" id="RSH-P4-fNa"/>
+                                </constraints>
                                 <color key="tintColor" systemColor="systemIndigoColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain">
-                                    <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="default"/>
+                                <buttonConfiguration key="configuration" style="plain" imagePadding="0.0">
+                                    <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="default"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="clickAddButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lah-bB-MiA"/>
@@ -197,7 +202,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="tZQ-fs-gty" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1Xg-Kv-8So"/>
-                            <constraint firstAttribute="bottom" secondItem="S0f-0y-Uqr" secondAttribute="bottom" constant="60" id="6rL-QY-VIL"/>
+                            <constraint firstAttribute="bottom" secondItem="S0f-0y-Uqr" secondAttribute="bottom" constant="30" id="6rL-QY-VIL"/>
                             <constraint firstItem="tZQ-fs-gty" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="UUA-fJ-Hee"/>
                             <constraint firstItem="tZQ-fs-gty" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="fnZ-6j-obw"/>
                             <constraint firstItem="tZQ-fs-gty" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ijo-Ie-lUD"/>
@@ -206,7 +211,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="plb-Yy-x7o"/>
                     <connections>
-                        <outlet property="addButton" destination="S0f-0y-Uqr" id="56r-H2-bok"/>
+                        <outlet property="scrollToTopButton" destination="S0f-0y-Uqr" id="56r-H2-bok"/>
                         <outlet property="tableview" destination="tZQ-fs-gty" id="fRV-2Y-fXq"/>
                     </connections>
                 </viewController>

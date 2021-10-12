@@ -13,7 +13,13 @@ class BrowseViewController: UIViewController {
     
     @IBOutlet weak var tableview: UITableView!
     
-    @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var scrollToTopButton: UIButton! {
+        
+        didSet {
+            
+            scrollToTopButton.imageView?.contentMode = .scaleAspectFill
+        }
+    }
     
     var db: Firestore!
         
