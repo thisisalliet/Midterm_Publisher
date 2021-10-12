@@ -13,7 +13,7 @@ class PostViewController: UIViewController {
     
     var db: Firestore!
     
-    let timeStamp = Timestamp(date: Date())
+//    let timeStamp = Timestamp(date: Date())
     
     @IBOutlet weak var titleTextField: UITextField!
         
@@ -76,13 +76,15 @@ class PostViewController: UIViewController {
         
         guard let content = contentTextField.text else { return }
         
+        let time = Timestamp(date: Date())
+        
         let id = db.collection(CollectionName.articles.rawValue).document().documentID
         
         let newPost = Post(
             author: "Allie",
             category: category,
             content: content,
-            time: timeStamp,
+            time: time,
             title: title)
         
         do {

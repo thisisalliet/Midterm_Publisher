@@ -25,6 +25,14 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var contentLabel: UILabel!
     
+    @IBOutlet weak var categoryView: UIView! {
+        
+        didSet {
+            
+            categoryView.layer.cornerRadius = 5
+        }
+    }
+    
     @IBOutlet weak var categoryLabel: UILabel!
 
 }

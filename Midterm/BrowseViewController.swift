@@ -9,24 +9,31 @@ import UIKit
 import Firebase
 import FirebaseFirestoreSwift
 
-class ViewController: UIViewController {
+class BrowseViewController: UIViewController {
+    
+    @IBOutlet weak var tableview: UITableView!
+    
+    @IBOutlet weak var addButton: UIButton!
     
     var db: Firestore!
         
-    let timestamp = "\(Timestamp(date: Date()))"
+    var postList = [Post]() {
+        
+        didSet {
+            tableview.reloadData()
+        }
+    }
     
-    var postList = [Post]()
-
-    @IBOutlet weak var tableview: UITableView!
+    let timestamp = "\(Timestamp(date: Date()))"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         db = Firestore.firestore()
         
-        setUpNavigationbar()
+        setUpNavigationBar()
         
-        setUpTabbar()
+        setUpTabBar()
         
         tableview.dataSource = self
         
@@ -37,7 +44,14 @@ class ViewController: UIViewController {
         monitorData()
     }
     
-    func setUpNavigationbar() {
+    @IBAction func clickAddButton(_ sender: UIButton) {
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        
+        tableview.scrollToRow(at: indexPath, at: .top, animated: true)
+    }
+    
+    func setUpNavigationBar() {
         
         self.navigationController?.navigationBar.isTranslucent = false
 
@@ -46,7 +60,7 @@ class ViewController: UIViewController {
         self.navigationController?.navigationItem.titleView?.tintColor = .white
     }
     
-    func setUpTabbar() {
+    func setUpTabBar() {
         
         self.tabBarController?.tabBar.isTranslucent = false
         
@@ -79,30 +93,26 @@ class ViewController: UIViewController {
     func monitorData() {
         db.collection(CollectionName.articles.rawValue).addSnapshotListener { snapshot, error in
             guard let snapshot = snapshot else { return }
-            snapshot.documentChanges.forEach { documentChange in
-                switch documentChange.type {
-                case .added:
-                    guard let post = try? documentChange.document.data(as: Post.self) else { break }
-                    print("""
-                        title: \(post.title)
-                        author: \(post.author)
-                        category: \(post.category)
-                        content: \(post.content)
-                        time: \(post.time)
-                        ==============================================
-                """)
-                case .modified:
-                    print("modified")
-                case .removed:
-                    print("removed")
-                }
+            
+            self.showPost()
+        }
+    }
+    
+    func showPost() {
+        
+        db.collection(CollectionName.articles.rawValue).getDocuments { (snapshot, error) in
+            guard let snapshot = snapshot else { return }
+            let allPost = snapshot.documents.compactMap { snapshot in
+                try? snapshot.data(as: Post.self)
             }
+            print(allPost)
+            self.postList = allPost
         }
     }
 }
 
 
-extension ViewController: UITableViewDataSource {
+extension BrowseViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -128,7 +138,7 @@ extension ViewController: UITableViewDataSource {
 }
 
 
-extension ViewController: UITableViewDelegate {
+extension BrowseViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
